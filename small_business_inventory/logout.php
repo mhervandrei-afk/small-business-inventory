@@ -1,6 +1,8 @@
-
 <?php
-session_start();
+// Start session before sending any output
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Clear all session data
 $_SESSION = [];
