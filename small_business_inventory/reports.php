@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Asia/Manila");
 session_start();
 
 if (!isset($_SESSION["user_id"])) {
@@ -109,11 +110,12 @@ if (!$totalItemsResult) {
 $totalItemsSold = $totalItemsResult->fetch_assoc()["total"];
 $totalItemsResult->free();
 
-// Today's sales
+// Today's sales - Philippine Time (UTC+8)
 $todaySalesResult = $conn->query(
     "SELECT COALESCE(SUM(total_amount), 0) AS total
      FROM sales
-     WHERE DATE(sale_date) = CURDATE()"
+     WHERE DATE(DATE_ADD(sale_date, INTERVAL 8 HOUR))
+           = DATE(DATE_ADD(UTC_TIMESTAMP(), INTERVAL 8 HOUR))"
 );
 
 if (!$todaySalesResult) {
@@ -125,15 +127,15 @@ if (!$todaySalesResult) {
 $todaySales = $todaySalesResult->fetch_assoc()["total"];
 $todaySalesResult->free();
 
-// Daily sales report
+// Daily sales report - Philippine Time (UTC+8)
 $dailyReports = $conn->query(
     "SELECT
-        DATE(sale_date) AS report_date,
+        DATE(DATE_ADD(sale_date, INTERVAL 8 HOUR)) AS report_date,
         COUNT(*) AS transactions,
         COALESCE(SUM(quantity), 0) AS items_sold,
         COALESCE(SUM(total_amount), 0) AS daily_total
      FROM sales
-     GROUP BY DATE(sale_date)
+     GROUP BY DATE(DATE_ADD(sale_date, INTERVAL 8 HOUR))
      ORDER BY report_date DESC"
 );
 
@@ -143,7 +145,7 @@ if (!$dailyReports) {
     exit("Unable to load daily sales reports.");
 }
 
-// Sales history
+// Sales history - display Philippine Time (UTC+8)
 $salesHistory = $conn->query(
     "SELECT
         id,
@@ -151,7 +153,7 @@ $salesHistory = $conn->query(
         quantity,
         unit_price,
         total_amount,
-        sale_date
+        DATE_ADD(sale_date, INTERVAL 8 HOUR) AS sale_date
      FROM sales
      ORDER BY sale_date DESC, id DESC"
 );
