@@ -1,7 +1,8 @@
-
 FROM php:8.3-apache
 
-RUN docker-php-ext-install mysqli
+RUN apt-get update && apt-get install -y ca-certificates \
+    && docker-php-ext-install mysqli \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod rewrite
 
