@@ -1,0 +1,203 @@
+/* =================================
+   SMALL BUSINESS INVENTORY SYSTEM
+   NAVY BLUE + ORANGE THEME
+================================= */
+
+:root {
+    --navy: #172554;
+    --navy-dark: #0f172a;
+    --navy-light: #243b70;
+    --orange: #f59e0b;
+    --orange-dark: #d97706;
+    --background: #f1f5f9;
+    --white: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+}
+
+/* NAVBAR */
+
+.navbar {
+    background: var(--navy) !important;
+    padding: 15px 20px;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* HEADINGS */
+
+h1, h2, h3, h4, h5 {
+    color: var(--navy);
+    font-weight: 700;
+}
+
+/* BUTTONS */
+
+.btn-success {
+    background: var(--orange) !important;
+    border-color: var(--orange) !important;
+    color: var(--navy-dark) !important;
+    font-weight: 600;
+}
+
+.btn-success:hover {
+    background: var(--orange-dark) !important;
+    border-color: var(--orange-dark) !important;
+    color: white !important;
+}
+
+.btn-primary {
+    background: var(--navy) !important;
+    border-color: var(--navy) !important;
+}
+
+/* CARDS */
+
+.card {
+    background: var(--white);
+    border: 1px solid var(--border) !important;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05) !important;
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 7px 20px rgba(15, 23, 42, 0.10) !important;
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.card p {
+    color: var(--muted);
+}
+
+/* INPUTS */
+
+.form-control {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px;
+}
+
+.form-control:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 0.2rem rgba(245, 158, 11, 0.15);
+}
+
+/* PASSWORD SHOW / HIDE */
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    padding-right: 48px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 3px;
+    line-height: 1;
+}
+
+.toggle-password:hover {
+    color: var(--navy);
+}
+
+.toggle-password:focus {
+    outline: none;
+    color: var(--orange-dark);
+}
+
+/* TABLES */
+
+.table {
+    background: white;
+    border-radius: 10px;
+}
+
+.table thead th {
+    background: var(--navy);
+    color: white;
+    padding: 14px;
+}
+
+.table td {
+    padding: 13px;
+    vertical-align: middle;
+}
+
+/* ALERTS */
+
+.alert-success {
+    background: #fff7ed;
+    color: #9a3412;
+    border-color: #fed7aa;
+}
+
+/* LINKS */
+
+a {
+    color: var(--orange-dark);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--navy);
+}
+
+/* DASHBOARD CONTAINER */
+
+.container {
+    max-width: 1250px;
+}
+
+/* BADGES */
+
+.badge.bg-success {
+    background: #16a34a !important;
+}
+
+.badge.bg-warning {
+    background: var(--orange) !important;
+    color: var(--navy-dark);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .card-body {
+        padding: 18px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+}

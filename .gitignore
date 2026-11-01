@@ -1,0 +1,4 @@
+.env
+*.sql
+*.pem
+test_connection.php
